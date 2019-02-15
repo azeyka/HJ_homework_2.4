@@ -12,7 +12,7 @@ function init() {
   
   Array.from(buttons).forEach((button) => {
     button.addEventListener('click', onClick)
-  })
+  });
                               
   function validateField() {
     if (this.name === 'lastname' || this.name === 'name' || this.name === 'city') {
@@ -29,7 +29,7 @@ function init() {
     };
     
     validateForm();
-  }
+  };
   
   function validateForm() {
     function isFilled(field) {
