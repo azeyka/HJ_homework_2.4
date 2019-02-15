@@ -29,5 +29,30 @@
     </ul>
     <h3>Выполнено задач: <output></output></h3>
   </fieldset>
+  
+  <script>
+    const listBlock = document.getElementsByClassName('list-block')[0],
+          checkers = listBlock.getElementsByTagName('input'),
+          output = listBlock.getElementsByTagName('output')[0];
+    
+    output.innerHTML = doneTaskCounting();
+    
+    function onChange() {
+      output.innerHTML = doneTaskCounting();
+    };
+    
+    function doneTaskCounting() {
+      let done = 0;
+      Array.from(checkers).forEach((checker) => {
+        if(checker.checked) done += 1;
+      });
+      done === checkers.length ? listBlock.classList.add('complete') : listBlock.classList.remove('complete');
+      return `${done} из ${checkers.length}`;
+    };
+    
+    Array.from(checkers).forEach((checker) => {
+      checker.addEventListener('change', onChange);
+    });
+  </script>
 </body>
 </html>
