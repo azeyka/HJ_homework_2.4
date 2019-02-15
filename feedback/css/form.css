@@ -29,6 +29,10 @@ main h2 {
   margin-top: 30px;
 }
 
+main h3 {
+  margin-left: 30px;
+}
+
 main p:last-child {
   margin-bottom: 30px;
 }
@@ -150,4 +154,9 @@ fieldset {
 
 .hidden {
   display: none;
+}
+
+.wrong {
+/*  border: 1px solid #EF9A9A;*/
+  background: #FFEBEE;
 }
