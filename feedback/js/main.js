@@ -17,12 +17,16 @@ function init() {
   function validateField() {
     if (this.name === 'lastname' || this.name === 'name' || this.name === 'city') {
       this.value = this.value[0].toUpperCase() + this.value.slice(1);
+      
     } else if (this.name === 'email') {
       const rule = /^((([0-9A-Za-z]{1}[-0-9A-z\.]{1,}[0-9A-Za-z]{1})|([0-9А-Яа-я]{1}[-0-9А-я\.]{1,}[0-9А-Яа-я]{1}))@([-A-Za-z]{1,}\.){1,2}[-A-Za-z]{2,})$/;
       rule.test(this.value) ? this.classList.remove('wrong') : this.classList.add('wrong');
+      
     } else if (this.name === 'zip') {
-      const rule = /^\d{6}$/;
-      rule.test(this.value) ? this.classList.remove('wrong') : this.classList.add('wrong');
+      this.value = Array.from(this.value).filter((letter) => {
+        return /\d/.test(letter)
+      }).slice(0, 6).join('');
+      
     } else if (this.name === 'phone') {
       const rule = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/;
       rule.test(this.value) ? this.classList.remove('wrong') : this.classList.add('wrong');
